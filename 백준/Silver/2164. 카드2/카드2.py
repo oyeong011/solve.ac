@@ -1,12 +1,6 @@
-import sys
-from collections import deque
+N, a = int(input()) , 1
 
-N = int(sys.stdin.readline())
+while N > a:
+    a *= 2
 
-q = deque([i for i in range(1, N+1)])
-
-while len(q) != 1:
-    q.popleft()
-    q.append(q.popleft())
-
-print(q[0])
+print((N-(a//2))*2 if N != 1 else 1)
