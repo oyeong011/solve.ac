@@ -10,7 +10,7 @@ int main(){
 
     stack<int> st;
 
-    for(int i=0;i<N;i++){
+    while(N--){
         string cmd; cin >> cmd;
         if(cmd == "push") { 
             int X; cin >> X;
