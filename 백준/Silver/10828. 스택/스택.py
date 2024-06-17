@@ -1,19 +1,26 @@
 import sys
+input = sys.stdin.readline
 
-num = int(sys.stdin.readline())  # O(1)
-stack = []  # O(1)
+stack = []
 
-for _ in range(num):  # O(num)
-    command = sys.stdin.readline().split()  # O(1)
-    op = command[0]  # O(1)
+n = int(input().strip())
 
-    if op == 'push':
-        stack.append(command[1])  # O(1)
-    elif op == 'pop':
-        print(stack.pop() if stack else -1)  # O(1)
-    elif op == 'size':
-        print(len(stack))  # O(1)
-    elif op == 'empty':
-        print(int(not stack))  # O(1)
-    elif op == 'top':
-        print(stack[-1] if stack else -1)  # O(1)
+for _ in range(n):
+    cmd = input().strip().split()
+
+    if cmd[0] == "push":
+        stack.append(int(cmd[1]))
+    elif cmd[0] == "pop":
+        if stack:
+            print(stack.pop())
+        else:
+            print(-1)
+    elif cmd[0] == "size":
+        print(len(stack))
+    elif cmd[0] == "empty":
+        print(0 if stack else 1)
+    elif cmd[0] == "top":
+        if stack:
+            print(stack[-1])
+        else:
+            print(-1)
