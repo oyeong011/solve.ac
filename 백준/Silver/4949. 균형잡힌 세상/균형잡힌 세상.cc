@@ -12,7 +12,9 @@ bool solve(vector<char> v, string s) {
     return v.empty();
 }
 int main() {
-
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);  
+    cout.tie(NULL); 
     while (getline(cin, s) && s != ".") {
         vector<char> v;
         if (solve(v, s))cout << "yes" << "\n";
