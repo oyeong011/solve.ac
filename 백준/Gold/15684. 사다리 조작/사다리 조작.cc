@@ -1,51 +1,51 @@
 #include<bits/stdc++.h>
 using namespace std;
-const int INF = 987654321;
-int a, b, n, m, h, ret = INF, visited[50][50];
+int n, m, h, ans = 4;
+bool visited[31][11];
 
 bool check() {
-    for (int i = 1; i <= n; i++) {
-        int start = i;
-        for (int j = 1; j <= h; j++) {
-            if (visited[j][start]) start++;
-            else if (visited[j][start - 1]) start--;
+    for(int i = 1; i <= n; ++i) {
+        int cur = i;
+        for(int j = 1; j <= h; ++j) {
+            if(visited[j][cur]) ++cur;
+            else if(visited[j][cur-1]) --cur;
         }
-        if (start != i) return false;
+        if(cur != i) return false;
     }
     return true;
 }
 
-void go(int y, int x, int cnt) {
-    if (cnt >= 4 || cnt >= ret) return;
-    if (check()) {
-        ret = min(ret, cnt);
+void go(int cnt, int goal) {
+    if(ans < 4) return;  
+    if(cnt == goal) {    
+        if(check()) ans = goal;
         return;
     }
     
-    int i = y;
-    for (; i <= h; i++) {
-        int j = (i == y ? x : 1);
-        for (; j < n; j++) {
-            if (visited[i][j] || visited[i][j - 1] || visited[i][j + 1]) continue;
+    for(int j = 1; j < n; ++j) {
+        for(int i = 1; i <= h; ++i) {
+            if(visited[i][j] || visited[i][j+1] || visited[i][j-1]) continue;
             visited[i][j] = 1;
-            go(i, j + 1, cnt + 1);
+            go(cnt + 1, goal);
             visited[i][j] = 0;
+            while(i <= h && !visited[i][j-1] && !visited[i][j+1]) ++i;
         }
     }
 }
 
 int main() {
-    ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
+    ios::sync_with_stdio(false); cin.tie(0);
     cin >> n >> m >> h;
-    for (int i = 1; i <= m; i++) {
-        cin >> a >> b; 
+    for(int i = 0; i < m; ++i) {
+        int a, b;
+        cin >> a >> b;
         visited[a][b] = 1;
     }
-
-    for (int i = 0; i < 4; i++) {
-        go(1, 1, i);
-        if (ret != INF) {
-            cout << ret << "\n";
+    
+    for(int i = 0; i < 4; ++i) {
+        go(0, i);
+        if(ans != 4) {
+            cout << ans << '\n';
             return 0;
         }
     }
