@@ -17,7 +17,7 @@ void go(string cmd) {
         if (l & (1 << num - 1)) l &= ~(1 << num - 1);
         else l |= (1 << num - 1);
     } else if (cmd == "all") {
-        for (int i = 0; i < 20; i++) l |= (1 << i);
+        l = (1 << 20) - 1;
     } else if (cmd == "empty") {
         l = 0;
     }
