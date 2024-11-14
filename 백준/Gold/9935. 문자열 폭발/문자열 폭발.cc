@@ -1,18 +1,23 @@
 #include<bits/stdc++.h>
 using namespace std;
-string s, t, ret;
-int main() {
-    cin >> s >> t;
-    for (auto a : s) {
-        ret += a;
-        if (ret.size() >= t.size() && ret.substr(ret.size() - t.size(), t.size()) == t) {
-            ret.erase(ret.end() - t.size(), ret.end());
+string str, bomb;
+int main(){
+    cin >>str>>bomb;
+    int m = bomb.size(), e = 0;
+    for(int i = 0; i < str.size(); i++){
+        str[e++] = str[i];
+        if(e - m < 0)continue;
+        bool flag = false;
+        for(int j = 0; j < m; j++){
+            if(str[e-m+j] != bomb[j]){
+                flag = true;
+                break;
+            }
         }
+        if(flag)continue;
+        e = e-m;
     }
-
-    if (!ret.size()) {
-        cout << "FRULA";
-        return 0;
-    }
-    cout << ret << "\n";
+    str.resize(e);
+    if(!str.size()){cout << "FRULA" << "\n";return 0;}
+    cout << str << "\n";
 }
