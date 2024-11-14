@@ -13,12 +13,8 @@ int main() {
 
     sort(v.begin(), v.end());
     for (int i = 0; i < n; i++) {
-        if (ret < v[i].first) {
-            ret = v[i].first;
-            ret += v[i].second;
-        }else if (ret >= v[i].first) {
-            ret += v[i].second;
-        }
+        ret = max(ret, v[i].first);
+        ret += v[i].second;
     }
 
     cout << ret << '\n';
