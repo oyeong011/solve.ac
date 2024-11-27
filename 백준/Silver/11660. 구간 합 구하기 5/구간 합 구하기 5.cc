@@ -8,17 +8,14 @@ int main() {
     for (int i = 1; i <= n; i++) {
         for (int j = 1; j <= n; j++) {
             cin >> mp[i][j];
-            mp[i][j] += mp[i][j-1];
+            mp[i][j] += mp[i][j - 1] + mp[i - 1][j] - mp[i - 1][j - 1];
         }
     }
 
     for (int i = 1; i <= m; i++) {
         cin >> y1 >> x1 >> y2 >> x2;
         // cout << x1 << " " << y1 << " " << x2 << " " << y2 << endl;
-        int sum = 0;
-        for (int j = y1; j <= y2; j++) {
-            sum += (mp[j][x2] - mp[j][x1-1]);
-        }
+        int sum = mp[y2][x2] - mp[y1 - 1][x2] - mp[y2][x1 - 1] + mp[y1 - 1][x1 - 1];
         cout << sum << '\n';
     }
 }
