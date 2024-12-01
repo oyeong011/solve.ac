@@ -10,7 +10,6 @@ int main() {
     for (int i = 0; i < n; i++) {
         cin >> v[i];
     }
-    sort(v.rbegin(), v.rend());
     fill(dp, dp + 10004, INF);
 
     dp[0] = 0;
