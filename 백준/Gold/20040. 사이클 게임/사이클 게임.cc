@@ -1,35 +1,32 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-int n, m, parent[500000], ans;
-int find(int u) {
-    if (parent[u] == u) return u;
-    else return parent[u] = find(parent[u]);
-}
+int n, m, x, y, parent[500001], turn=0;
 
-bool union_node(int u, int v) {
-    u = find(u);
-    v = find(v);
-    if (u == v) return true;
-    parent[u] = v;
-    return false;
+int find(int x) {
+    if (x == parent[x]) return x;
+    return parent[x] = find(parent[x]);
 }
 
 int main() {
-    ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+    cin.tie(nullptr);
+    ios::sync_with_stdio(false);
+
     cin >> n >> m;
-    for (int i = 0; i < n; i++) {
-        parent[i] = i;
-    }
+    turn = 0;
+    for(int i = 0; i < n; i++)parent[i]=i;
 
-    for (int i = 1; i <= m; i++) {
-        int u, v;
-        cin >> u >> v;
-        if (union_node(u, v)) {
-            ans = i;
-            break;
+    for(int i = 0; i < m; i++) {
+        turn++;
+        cin >> x >> y;
+        int px = find(x), py = find(y);
+        if(px == py) {
+            cout << turn;
+            return 0;
         }
+        if(px < py) parent[py] = px;
+        else parent[px] = py;
     }
+    cout << 0;
+    return 0;
 
-    if (ans == 0) cout << 0;
-    else cout << ans;
 }
