@@ -25,19 +25,19 @@ int main(){
     for(int i = 1; i <= V; i++){
         parent[i] = i;
     }
-    
+
     int cnt = 0;
     for(int i = 0; i < v.size(); i++){
         T curEdge = v[i];
         int cost = curEdge.first;
         int now = curEdge.second.first;
         int next = curEdge.second.second;
-        
+
         if(findParent(now) == findParent(next)) continue;
         unionParent(now, next);
         ans += cost;
         if(++cnt == V - 1) break;
     }
-    
+
     cout << ans;
 }
