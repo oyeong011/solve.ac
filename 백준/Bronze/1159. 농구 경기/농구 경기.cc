@@ -1,25 +1,26 @@
 #include<bits/stdc++.h>
 using namespace std;
-int num, CNT[26], result = 0;
-string str;
+
+int n, flag = 0;
+string s;
+int al[26] = {0,};
+
 int main(){
-    ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
-    
-    cin >> num;
-    for (int i = 0; i < num ; i++){
-        cin >> str;
-        CNT[str[0]-'a']++;
+    cin >> n;
+    string s[n];
+    for(int i=0; i< n;i++){
+        cin >> s[i];
     }
+
+    for(int i =0; i< n; i++)
+        al[s[i][0] - 'a']++;
     
-    for(int i = 0; i< 26; i++){
-        if(CNT[i]>=5){
-            char a = 'a' + i;
-            cout << a;
-            result = 1;
+    for(int i =0; i< 26; i++){
+        if(al[i] >= 5){
+            cout << char(i + 'a');
+            flag = 1;
         }
     }
-    
-    if (result == 0) {
-        cout << "PREDAJA";
-    }
+    if(flag == 0) cout << "PREDAJA";
+    return 0;
 }
