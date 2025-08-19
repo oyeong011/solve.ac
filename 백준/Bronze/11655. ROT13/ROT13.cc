@@ -1,18 +1,24 @@
+//
+// Created by 권오영 on 25. 6. 27.
+//
 #include<bits/stdc++.h>
 using namespace std;
-string str;
 
 int main() {
-    getline(cin, str);
+    string s;
+    getline(cin, s);
 
-    for (int i = 0; i < str.length(); i++) {
-        if (str[i] >= 65 && str[i] < 97) {
-            if (str[i] + 13 > 90) str[i] = str[i] + 13 - 26;
-            else str[i] = str[i] + 13;
-        }else if (str[i] >= 97 && str[i] <= 122) {
-            if (str[i] + 13 > 122) str[i] = str[i] + 13 -26;
-            else str[i] = str[i] + 13;
+    for (int i = 0; i < s.length(); i++) {
+        char a = s[i];
+        if (a >= 'A' && a <= 'Z') {
+            if (s[i] + 13 > 90) s[i] = s[i] + 13 - 26;
+            else s[i] = s[i] + 13;
+        } else if (a >= 'a' && a <= 'z') {
+            if (s[i] + 13 > 122) s[i] = s[i] + 13 - 26;
+            else s[i] = s[i] + 13;
         }
-        cout << str[i];
     }
+
+    cout << s;
+    return 0;
 }
