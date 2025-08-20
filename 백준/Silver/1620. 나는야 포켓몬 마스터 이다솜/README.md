@@ -4,15 +4,15 @@
 
 ### 성능 요약
 
-메모리: 33460 KB, 시간: 196 ms
+메모리: 20920 KB, 시간: 164 ms
 
 ### 분류
 
-자료 구조, 해시를 사용한 집합과 맵
+자료 구조, 집합과 맵, 해시를 사용한 집합과 맵
 
 ### 제출 일자
 
-2024년 10월 4일 11:41:41
+2025년 8월 20일 16:47:49
 
 ### 문제 설명
 
@@ -54,7 +54,7 @@
 
 <p>오영식 : 어? 오박사님 얘는 누구인가요?</p>
 
-<p><img alt="" src="https://www.acmicpc.net/upload/201004/p4.PNG" style="height:182px; width:274px"></p>
+<p><img alt="" src="" style="height:182px; width:274px"></p>
 
 <p>오박사 : 얘는 너의 라이벌이 될 친구 이다솜이라고 하네. 자, 포켓몬을 한 마리 골라보도록 해봐라 다솜아. 레이디퍼스트 네가 먼저 골라봐라.</p>
 
@@ -70,7 +70,7 @@
 
 <p>이다솜 : 피카츄 공격!</p>
 
-<p><img alt="" src="https://www.acmicpc.net/upload/201004/p6.PNG" style="height:182px; width:274px"></p>
+<p><img alt="" src="" style="height:182px; width:274px"></p>
 
 <p>가라 몬스터 볼!</p>
 
@@ -80,11 +80,11 @@
 
 <p>이다솜 : 그럼! 일단 사천왕을 이기고 오겠어!</p>
 
-<p><img alt="" src="" style="height:181px; width:274px"></p>
+<p><img alt="" src="https://www.acmicpc.net/upload/201004/p8.PNG" style="height:181px; width:274px"></p>
 
 <p>이다솜 : 여기가 사천왕과 대결하려면 가야하는 곳인가..</p>
 
-<p><img alt="" src="https://www.acmicpc.net/upload/201004/p9.PNG" style="height:181px; width:274px"></p>
+<p><img alt="" src="" style="height:181px; width:274px"></p>
 
 <p>경비원 : 사천왕과 대결을 하려면, 마을의 체육관 리더를 이겨서 배지를 8개를 모아야 한다네... 배지를 모아서 오도록 하게</p>
 
@@ -102,11 +102,11 @@
 
 <p><img alt="" src="" style="height:181px; width:274px"></p>
 
-<p><img alt="" src="https://www.acmicpc.net/upload/201004/pc.PNG" style="height:183px; width:274px"></p>
+<p><img alt="" src="" style="height:183px; width:274px"></p>
 
 <p><img alt="" src="" style="height:182px; width:274px"></p>
 
-<p><img alt="" src="" style="height:183px; width:274px"></p>
+<p><img alt="" src="https://www.acmicpc.net/upload/201004/pe.PNG" style="height:183px; width:274px"></p>
 
 <p><img alt="" src="" style="height:183px; width:274px"></p>
 
