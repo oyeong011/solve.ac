@@ -1,19 +1,19 @@
 #include<bits/stdc++.h>
 using namespace std;
-typedef long long ll;
-int n;
 
-int main() {
-    while (scanf("%d", &n) != EOF) {
-        int cnt = 1, ret = 1;
-        while (true) {
-            if (cnt % n == 0) {
-                printf("%d\n", ret);
+int main(){
+    int n;
+    while(scanf("%d", &n) != EOF){
+        long long num = 1;  
+        int cnt = 1;
+        
+        while(1){
+            if(num % n == 0){
+                cout << cnt << "\n";
                 break;
             }
-            cnt = (cnt * 10) + 1;
-            cnt %= n;
-            ret++;
+            num = ((num * 10) % n + 1) % n; 
+            cnt++;
         }
     }
     return 0;
