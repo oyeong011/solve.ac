@@ -1,35 +1,35 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-string s, ret;
-vector<string> v;
 int n;
-void go() {
-    while (true) {
-        if (ret.size() && ret.front() == '0')ret.erase(ret.begin());
+vector<string> v;
+string s, ret;
+void go(){
+    while(1){
+        if(ret.size() && ret.front() == '0')ret.erase(ret.begin());
         else break;
     }
-    if (ret.size() == 0)ret = "0";
+    if(ret.size() == 0) ret ="0";
     v.push_back(ret);
     ret = "";
 }
 
-bool cmp (string a, string b) {
-    if (a.size() == b.size())return a < b;
+bool cmp(string a, string b){
+    if(a.size() == b.size()) return a < b;
     return a.size() < b.size();
 }
-int main() {
+
+int main(){
     cin >> n;
-    for (int i = 0; i < n; i++) {
+    for(int i=0;i<n;i++){
         cin >> s;
-        ret = "";
-        for (int j = 0; j < s.size();j++) {
-            if (s[j] < 65)ret += s[j];
-            else if (ret.size()) go();
+        ret="";
+        for(int j=0;j<s.size();j++){
+            if(s[j] < 65) ret += s[j];
+            else if(ret.size()) go();
         }
-        if (ret.size()) go();
+        if(ret.size()) go();
     }
-    sort(v.begin(), v.end(), cmp);
-    for (string a : v) {
-        cout << a << "\n";
-    }
+    sort(v.begin(),v.end(), cmp);
+    for(string i : v) cout << i << "\n";
+    return 0;
 }
