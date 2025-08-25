@@ -1,41 +1,33 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-char c[104][104];
-int ret[104][104],h, w ;
+int h, w;
 string s;
-
-void go(int i) {
-    bool flag = false;
-    int cnt = 0;
-    for (int j = 0; j < w; j++) {
-        if (c[i][j] == 'c') {
-            flag = true;
-            cnt = 0;
-        }
-        if (flag)ret[i][j] = cnt++;
-    }
-}
-
-
+int a[101][101];
 int main() {
-    ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
     cin >> h >> w;
-    fill(&ret[0][0], &ret[0][0] + 104 * 104, -1);
-    for (int i = 0; i < h;i++) {
+
+    vector<int> v(h,w);
+    for (int i=0;i<h;i++) {
         cin >> s;
-        for (int j = 0; j < w; j++) {
-            c[i][j] = s[j];
+        bool flag = false;
+        int cnt = -1;
+        for (int j=0;j<w;j++) {
+            if (s[j] == 'c') {
+                flag = true;
+                cnt = -1;
+            }
+            if (flag) cnt++;
+            else cnt = -1;
+            a[i][j] = cnt;
         }
     }
-    for (int i = 0; i < h;i++) {
-        go(i);
-    }
 
-    for (int i = 0; i < h;i++) {
-        for (int j = 0; j < w; j++) {
-            cout << ret[i][j] << " ";
+    for(int i=0;i<h;i++){
+        for(int j=0;j<w;j++){
+            cout << a[i][j] << " ";
         }
         cout << "\n";
     }
-
 }
