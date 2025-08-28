@@ -1,23 +1,30 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 string s;
-bool solve(vector<char> v, string s) {
-    for (auto c : s) {
-        if (c == '(' || c == '[')v.push_back(c);
-        else if(c ==')' || c == ']') {
-            if (!v.empty() && (c ==')' && v.back() == '(' || c ==']' && v.back() == '['))v.pop_back();
-            else return false;
-        }
-    }
-    return v.empty();
-}
+stack<char> st;
+bool flag = false;
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);  
-    cout.tie(NULL); 
-    while (getline(cin, s) && s != ".") {
-        vector<char> v;
-        if (solve(v, s))cout << "yes" << "\n";
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    while (true) {
+        flag = false;
+        getline(cin, s);
+        if (s[0] == '.') break;
+        for (int i=0;i<s.length();i++) {
+            if (s[i] == ']'){
+                if(!st.empty() && st.top() == '[')st.pop();
+                else flag = true;
+            }
+            if (s[i] == ')'){
+                if(!st.empty() && st.top() == '(')st.pop();
+                else flag = true;
+            }
+            if (s[i] == '(' || s[i] == '[') st.push(s[i]);
+        }
+
+        if (st.empty() && !flag) cout << "yes" << "\n";
         else cout << "no" << "\n";
+        while (!st.empty()) st.pop();
     }
+    return 0;
 }
