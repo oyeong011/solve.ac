@@ -1,23 +1,23 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-int n, temp;
-stack<pair<int, int>> s;
-int ret[1000004];
-int main() {
+int n;
+int main(){
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
     cin >> n;
-    for (int i = 0; i < n; i++) {
-        cin >> temp;
-        while(s.size() > 0 && s.top().second < temp) {
-            ret[s.top().first] = temp;
-            s.pop();
-        }
-        s.push({i, temp});
+    
+    vector<int> v(n);
+    vector<int> ret(n, -1);
+    for(int i=0;i<n;i++){
+        cin >> v[i];
     }
-    while (s.size() > 0) {
-        ret[s.top().first] = -1;
-        s.pop();
+    
+    stack<int> st;
+    for(int i=n-1;i>=0;i--){
+        while(!st.empty() && v[st.top()]<=v[i])st.pop();
+        if(!st.empty())ret[i] = v[st.top()];
+        st.push(i);
     }
-    for (int i = 0; i < n; i++) {
-        cout << ret[i] << " ";
-    }
+    for(int i=0;i<n;i++)cout << ret[i] << " ";
+    return 0;
 }
