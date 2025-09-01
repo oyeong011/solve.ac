@@ -1,40 +1,50 @@
 #include<bits/stdc++.h>
 using namespace std;
-int n, m, mx, visited[54][54];
-const int dy[] = {-1, 0, 1, 0};
-const int dx[] = {0, 1, 0, -1};
-char a[54][54];
-void bfs(int y, int x){
-    memset(visited, 0, sizeof(visited));
-    visited[y][x] = 1;
+int dx[] = {1, 0, -1, 0};
+int dy[] = {0, -1, 0, 1};
+char a[55][55];
+int vis[55][55];
+int row, col;
+
+int bfs(int y, int x){
     queue<pair<int, int>> q;
-    q.push({y, x});
-    while(q.size()){
-        tie(y, x) = q.front(); q.pop();
-        for(int i = 0; i < 4; i++){
-            int nx = x + dx[i], ny = y + dy[i];
-            if(nx < 0 || nx >= m || ny < 0 || ny >= n)continue;
-            if(visited[ny][nx]) continue;
-            if(a[ny][nx] == 'W') continue;
-            visited[ny][nx] = visited[y][x] + 1;
+    q.push({y,x});
+    memset(vis, 0, sizeof(vis));
+    vis[y][x] = 1;
+    int max_dist = 0;
+    while(!q.empty()){
+        auto [yy, xx] = q.front(); q.pop();
+        for(int i=0;i<4;i++){
+            int ny = yy + dy[i];
+            int nx = xx + dx[i];
+            if(ny < 0||nx<0||ny>=row||nx>=col)continue;
+            if(vis[ny][nx] || a[ny][nx] == 'W')continue;
             q.push({ny, nx});
-            mx = max(mx, visited[ny][nx]);
+            vis[ny][nx] = vis[yy][xx] + 1;
+            max_dist = max(max_dist, vis[ny][nx] - 1);
         }
     }
-    return;
+    return max_dist;
 }
+
+
 int main(){
-    cin >> n >> m;
-    for(int i = 0; i < n; i++){
-        for(int j = 0; j < m; j++){
-            cin >> a[i][j];
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    cin >> row >> col;
+    for(int i=0;i<row;i++){
+        string s;
+        cin >> s;
+        for(int j=0;j<s.length();j++){
+            a[i][j] = s[j];
         }
     }
-    for(int i = 0; i < n; i++){
-        for(int j = 0; j < m; j++){
-            if(a[i][j] == 'L')bfs(i, j);
-        }
-    }
-    cout << mx - 1 << "\n";
     
+    int ret=0;
+    for(int i=0;i<row;i++){
+        for(int j=0;j<col;j++){
+            if(a[i][j] == 'L')ret = max(ret, bfs(i, j));
+        }
+    }
+    cout << ret << "\n";
 }
