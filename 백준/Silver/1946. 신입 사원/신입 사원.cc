@@ -1,17 +1,16 @@
 #include<bits/stdc++.h>
 using namespace std;
 int T, N;
-vector<pair<int, int>> v;
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(NULL);cout.tie(NULL);
     cin >> T;
     while(T--){
         cin >> N;
+        vector<pair<int, int>> v(N);
+
         for(int i=0;i<N;i++){
-            int seo, meon;
-            cin >> seo >> meon;
-            v.push_back({seo, meon});
+            cin >> v[i].first >> v[i].second;
         }
         sort(v.begin(), v.end());
         int cnt = 1;
@@ -23,7 +22,6 @@ int main(){
             }
         }
         cout << cnt << "\n";
-        v.clear();
     }
     return 0;
 }
