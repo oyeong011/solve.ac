@@ -1,4 +1,19 @@
-SELECT CATEGORY, PRICE, PRODUCT_NAME
-FROM FOOD_PRODUCT
-WHERE PRICE IN (SELECT MAX(PRICE) FROM FOOD_PRODUCT GROUP BY CATEGORY) AND CATEGORY IN ('과자','국','김치','식용유')
-ORDER BY PRICE DESC
+select
+    CATEGORY,
+    price as MAX_PRICE,
+    PRODUCT_NAME
+from
+    FOOD_PRODUCT
+where  (category, price) in (
+        select
+            CATEGORY,
+            max(price)
+        from
+            FOOD_PRODUCT
+        where
+            category in ('과자', '국', '김치', '식용유')
+        group by
+            CATEGORY
+        )
+order by
+    MAX_PRICE desc
