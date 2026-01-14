@@ -1,19 +1,19 @@
 #include<bits/stdc++.h>
 using namespace std;
-int t, w, b[1004], dp[1004][2][34];
+int dp[1004][2][34], n, m, b[1004];
 
-int go(int idx, int tree, int cnt){
-    if(cnt < 0)return -1e9;
-    if(idx == t) return 0;
+int go(int idx, int tree, int cnt) {
+    if (cnt < 0) return -1e9;
+    if (idx == n) return cnt == 0 ? 0 : -1e9;
     int &ret = dp[idx][tree][cnt];
-    if(ret != -1)return ret;
-
-    return ret = max(go(idx + 1, tree, cnt), go(idx + 1, tree ^ 1, cnt - 1)) + (tree == b[idx] - 1);
+    if (~ret) return ret;
+    return ret = max(go(idx + 1, tree ^ 1, cnt - 1), go(idx + 1, tree, cnt)) + (tree == b[idx] - 1);
 }
-int main(){
-    ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
-    cin >> t >> w;
+
+int main() {
     memset(dp, -1, sizeof(dp));
-    for(int i = 0; i < t; i++) cin >> b[i];
-    cout << max(go(0, 0, w), go(0, 1, w - 1));
+    cin >> n >> m;
+    for (int i = 0; i < n; i++) cin >> b[i];
+    cout << max(go(0, 1, m - 1), go(0, 0, m)) << '\n';
+    return 0;
 }
